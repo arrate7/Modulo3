@@ -1,0 +1,11 @@
+﻿@model Animal
+
+@{
+    ViewData["Title"] = "Contacto";
+}
+
+<h1>@Model.Especie</h1>
+<h1>@Model.Familia</h1>
+<h1>@Model.Genero</h1>
+<img src="@Url.Content(Model.Imagen)" alt="@Model.Especie" />
+

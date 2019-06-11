@@ -1,0 +1,28 @@
+﻿@model List<Animal>
+
+@{
+    ViewData["Title"] = "Animales";
+}
+
+<h1>Animales</h1>
+
+<table style="width:100%">
+    <tr>
+        <th>Especie</th>
+        <th>Género</th>
+        <th>Familia</th>
+        <th>Imagen</th>
+    </tr>
+@{ 
+    foreach (Animal animal in Model)
+    {
+        <tr>
+            <td>@animal.Especie</td>
+            <td>@animal.Genero</td>
+            <td>@animal.Familia</td>
+            <td><img class="imganimal" src="@Url.Content(animal.Imagen)"/></td>
+        </tr>
+    }
+}
+</table>
+

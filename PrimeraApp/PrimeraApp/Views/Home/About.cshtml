@@ -1,0 +1,25 @@
+﻿
+
+@{
+    ViewData["Title"] = "About us";
+
+    string nombre = (string)(ViewData["nombre"]);
+    int edad = (int)ViewData["edad"];
+
+
+}
+
+<h1>@nombre @edad  años</h1>
+
+<ul>
+    @{
+    List<string> compras = (List<string>)ViewData["compras"];
+
+    foreach (string producto in compras)
+    {
+            <li>@producto </li>
+        }
+    }
+
+</ul>
+
