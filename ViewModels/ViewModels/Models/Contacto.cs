@@ -11,5 +11,6 @@ namespace ViewModels.Models
         public string Apellido { get; set; }
         public string Telefono { get; set; }
         public string Imagen { get; set; }
+        public string Tipo { get; set; }
     }
 }

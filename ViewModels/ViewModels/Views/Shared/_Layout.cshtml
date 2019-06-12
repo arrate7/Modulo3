@@ -37,8 +37,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Animales">Animales</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Agenda">Agenda</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Contactos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Agenda" asp-route-tipo ="Familia">Familia</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Agenda" asp-route-tipo ="Amigos">Amigos</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Agenda" asp-route-tipo ="Trabajo">Trabajo</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Agenda" asp-route-tipo ="">Todos</a>
+              
+                            </div>
                         </li>
                     </ul>
                 </div>

@@ -19,7 +19,7 @@ namespace ViewModels.Controllers
         {
             return View();
         }
-        public IActionResult Agenda()
+        public IActionResult Agenda(string tipo, string busqueda)
         {
 
             Agenda a1 = new Agenda
@@ -35,6 +35,7 @@ namespace ViewModels.Controllers
                 Nombre = "Arrate",
                 Apellido = "Ortiz de Zarate",
                 Imagen = "~/img/contact.png",
+                Tipo = "Familia",
                 Telefono = "8273728282"
 
             };
@@ -43,6 +44,7 @@ namespace ViewModels.Controllers
                 Nombre = "Arrate",
                 Apellido = "Ortiz de Zarate",
                 Imagen = "~/img/contact.png",
+                Tipo = "Familia",
                 Telefono = "8273728282"
 
             };
@@ -51,6 +53,7 @@ namespace ViewModels.Controllers
                 Nombre = "Arrate",
                 Apellido = "Ortiz de Zarate",
                 Imagen = "~/img/contact.png",
+                Tipo = "Amigos",
                 Telefono = "8273728282"
 
             };
@@ -59,6 +62,7 @@ namespace ViewModels.Controllers
                 Nombre = "Arrate",
                 Apellido = "Ortiz de Zarate",
                 Imagen = "~/img/contact.png",
+                Tipo = "Amigos",
                 Telefono = "8273728282"
 
             };
@@ -67,6 +71,7 @@ namespace ViewModels.Controllers
                 Nombre = "Arrate",
                 Apellido = "Ortiz de Zarate",
                 Imagen = "~/img/contact.png",
+                Tipo = "Trabajo",
                 Telefono = "8273728282"
 
             };
@@ -75,6 +80,7 @@ namespace ViewModels.Controllers
                 Nombre = "Arrate",
                 Apellido = "Ortiz de Zarate",
                 Imagen = "~/img/contact.png",
+                Tipo = "Trabajo",
                 Telefono = "8273728282"
 
             };
@@ -82,6 +88,19 @@ namespace ViewModels.Controllers
             {
                 c1,c2,c3,c4,c5,c6
             };
+
+            if (tipo == "Familia")
+            {
+                contactos = contactos.Where(x => x.Tipo == "Familia").ToList();
+            }
+            else if (tipo == "Amigos")
+            {
+                contactos = contactos.Where(x => x.Tipo == "Amigos").ToList();
+            }
+            else if (tipo == "Trabajo")
+            {
+                contactos = contactos.Where(x => x.Tipo == "Trabajo").ToList();
+            }
 
             AgendaContactoVM ac1 = new AgendaContactoVM
             {
@@ -91,6 +110,12 @@ namespace ViewModels.Controllers
 
             return View(ac1);
         }
+
+
+
+
+
+
 
         public IActionResult Animales()
         {
@@ -116,6 +141,11 @@ namespace ViewModels.Controllers
             {
                 a1,a2,a3
             };
+
+
+
+
+
 
             Familia f1 = new Familia
             {

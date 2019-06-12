@@ -3,6 +3,11 @@
 @{
     ViewData["Title"] = "Agenda";
 }
+<form asp-action="Busqueda">
+
+    <input  name="busqueda"/>
+    <button></button>
+</form>
 
 <h1>@Model.Agenda.Propietario</h1>
 <h3>Fecha Creación: @Model.Agenda.FechaCreacion.ToString("dd/MM/yyyy")</h3>
@@ -18,7 +23,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Nombre: @contacto.Nombre</h5>
                     <h5 class="card-title">Apellidos: @contacto.Apellido</h5>
-                    <h5 class="card-title">Teléfono: @contacto.Telefono</h5>                  
+                    <h5 class="card-title">Teléfono: @contacto.Telefono</h5>
+                    <h5 class="card-title">Tipo: @contacto.Tipo</h5>
                 </div>
             </div>
         }
