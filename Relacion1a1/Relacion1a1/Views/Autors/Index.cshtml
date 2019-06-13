@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Relacion1a1.Models.Autor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Index">
+    <input type="text" placeholder="Nombre" name="busqueda" />  
+    <button type="submit">Buscar</button>
+</form>
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidad)
+            </th>
+            <th>
+                Título 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Autor autor in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => autor.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => autor.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => autor.Nacionalidad)
+            </td>
+            <td>
+               @autor.Biografia.Titulo
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@autor.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@autor.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@autor.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

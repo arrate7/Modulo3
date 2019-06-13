@@ -1,0 +1,53 @@
+﻿@model List<Relacion1a1.Models.Persona>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Fecha Nacimiento
+            </th>
+            <th>
+                DNI
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Persona persona in Model) {
+        <tr>
+            <td>
+                @persona.Nombre
+            </td>
+            <td>
+                @persona.Apellido
+            </td>
+            <td>
+                @persona.FechaNacimiento
+            </td>
+            <td>
+                @persona.Dni.Identificador
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@persona.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@persona.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@persona.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
