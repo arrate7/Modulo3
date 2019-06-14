@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Relacion1aN.Models.Autor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                Libros
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Autor autor in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => autor.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => autor.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => autor.FechaNacimiento)
+                </td>
+                <td>
+                    <ul>
+                        @{
+                            foreach (Libro libro in autor.Libros)
+                            {
+                                <li>@libro.Titulo</li>
+                            }
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@autor.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@autor.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@autor.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
