@@ -21,8 +21,10 @@ namespace EmpresaWebApp.Controllers
         // GET: Departamentos
         public async Task<IActionResult> Index(int? idDep)
         {
+            //Dropdown
             ViewData["departamentos"] =await _context.Departamento.ToListAsync();
 
+            //Los datos de departamentos
             if(idDep != null)
             {
                 return View(await _context.Departamento.Include(x=>x.Empleados).Where(x=>x.Id == idDep).ToListAsync());
