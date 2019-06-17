@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RelacionNaN.Models.ExamenAlumno>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Nombre Alumno
+            </th>
+            <th>
+                Asignatura
+            </th>
+            <th>
+                Nota
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (ExamenAlumno examenAlumno in Model) {
+        <tr>
+            <td>
+               @examenAlumno.Alumno.Nombre
+            </td>
+            <td>
+                @examenAlumno.Examen.Asignatura
+            </td>
+            <td>
+                @examenAlumno.Nota
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@examenAlumno.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@examenAlumno.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@examenAlumno.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
