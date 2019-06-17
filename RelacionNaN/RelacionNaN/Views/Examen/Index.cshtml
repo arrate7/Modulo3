@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RelacionNaN.Models.Examen>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Asignatura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asignatura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                <form asp-action="Nota" >
+                    <input type="text" name="nota"/>
+                    <input type="hidden" name="idExamen" value="@item.Id"/>
+                    <button type="submit" >Introducir Nota</button>
+                </form>
+
+                @*<a asp-action="Alquilar" asp-route-id="@item.Id" asp-route-idUsuario="">Edit</a> |*@
+                @*@if(pelicula != rented)
+                {*@
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+
+               @* }*@
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
