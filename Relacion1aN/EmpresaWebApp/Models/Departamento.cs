@@ -15,6 +15,8 @@ namespace EmpresaWebApp.Models
         [StringLength(3,MinimumLength = 3)]
         public string Codigo { get; set; }
 
+        public int EmpresaId { get; set; }
+        public Empresa Empresa { get; set; }
         public List<Empleado> Empleados { get; set; }
 
     }   

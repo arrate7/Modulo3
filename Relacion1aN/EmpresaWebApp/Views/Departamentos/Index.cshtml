@@ -21,6 +21,11 @@
 </select>
 <button type="submit">Buscar</button>
 </form>
+<form asp-controller="Empleados" asp-action="Index">
+    <input type="text" name="nombre" />
+    <button type="submit">Buscar</button>
+</form>
+
 
 @foreach (Departamento departamento in Model)
 {
