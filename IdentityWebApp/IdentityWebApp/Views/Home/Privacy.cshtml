@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model AppUser
+@inject UserManager<AppUser> _userManager
+@{
+    ViewData["Title"] = "Privacy Policy";
+  
+}
+<h1>@ViewData["Title"]</h1>
+
+<h1>@Model.FirstName</h1>
+<h1>@Model.LastName</h1>
+<h3>@Model.PasswordHash</h3>
+
+
