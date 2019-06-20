@@ -32,9 +32,18 @@ namespace IdentityWebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-
                 AppUser user = await _userManager.FindByEmailAsync(User.Identity.Name);
-                return View(user);
+
+                if (await _userManager.IsInRoleAsync(user, ("Informático")))
+                {
+                    return View(user);
+
+                }
+                else
+                {
+                    return RedirectToAction("Matematicos","Index");
+                }
+
 
             }
 

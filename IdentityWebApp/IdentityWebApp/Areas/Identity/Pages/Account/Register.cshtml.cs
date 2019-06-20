@@ -20,17 +20,21 @@ namespace IdentityWebApp.Areas.Identity.Pages.Account
         private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -67,6 +71,8 @@ namespace IdentityWebApp.Areas.Identity.Pages.Account
             [DataType(DataType.DateTime)]
             [Display(Name = "Fecha Namcimiento")]
             public DateTime FechaNacimiento { get; set; }
+            [Display(Name = "Informático o Matemático")]
+            public bool Informatico { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -89,8 +95,23 @@ namespace IdentityWebApp.Areas.Identity.Pages.Account
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+
                 if (result.Succeeded)
                 {
+
+                    if (Input.Informatico)
+                    {
+                        await _userManager.AddToRoleAsync(user,"Informático");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user,"Matemático");
+
+                    }
+
+
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

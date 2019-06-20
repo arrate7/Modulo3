@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<AppUser> _userManager
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -34,11 +39,25 @@
                         </li>
 
                         @{
+
                             if (User.Identity.IsAuthenticated)
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                </li>
+                                AppUser user = await _userManager.FindByEmailAsync(User.Identity.Name);
+
+                                if (await _userManager.IsInRoleAsync(user, "Informático"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                    </li>
+
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Matematico">Matemático</a>
+                                    </li>
+                                }
+
 
                             }
                         }
